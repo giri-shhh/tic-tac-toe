@@ -124,3 +124,36 @@ body {
     width: calc(var(--mark-size) * 0.7);
     height: calc(var(--mark-size) * 0.7);
 }
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+}
+
+.winning-message button {
+    font-size: 2rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25rem .5rem;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    color: white;
+    background-color: black;
+    border-color: white;
+}
+
+.winning-message.show {
+ display: flex;   
+}
