@@ -15,6 +15,8 @@ const winningComb = [
 
 const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('board');
+const winningMessageElement = document.getElementById('winningMessage');
+const winnigMessage = document.querySelectorAll('[data-winning-message-text');
 
 const placeMark = (cell, currentClass) => {
   cell.classList.add(currentClass);
@@ -25,8 +27,8 @@ const switchTurns = () => {
 };
 
 const checkForWin = (currentClass) => {
-  return winningComb.some((comb) => {
-    return comb.every((index) => {
+  return winningComb.some(comb => {
+    return comb.every(index => {
       return cellElements[index].classList.contains(currentClass);
     });
   });
@@ -38,12 +40,21 @@ const setBoardHoverClass = () => {
   board.classList.add(circleTurn ? CIRCLE_CLASS : X_CLASS);
 };
 
+const endGame = (draw) => {
+  if(draw) {
+
+  } else {
+    winnigMessage.innerText = `${circleTurn ? 'O wins!!!' : 'X wins!!!'}`;
+  }
+  winningMessageElement.classList.add('show');
+}
+
 const handleClick = (e) => {
   const cell = e.target;
   const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
   placeMark(cell, currentClass);
   if (checkForWin(currentClass)) {
-    console.log('win');
+    endGame(false);
   }
   switchTurns();
   setBoardHoverClass();
